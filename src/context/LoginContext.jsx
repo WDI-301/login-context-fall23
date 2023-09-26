@@ -10,7 +10,8 @@ export const LoginDispatchContext = createContext(null)
 
 //initial State for the reducer
 const initalState = {
-    username: 'Brad'
+    username: 'Brad',
+    password: 'pwd'
 }
 
 //export for providing the context, which will contain our reducer for the values

@@ -7,7 +7,8 @@ import { fetchLogin, submitLogin } from '../../context/loginContextHelper'
 
 const Login = () => {
 const [value, setValue] = useState({
-  username: ''
+  username: '',
+  password: ''
 })
 
 
@@ -29,15 +30,24 @@ const onChangeHandler = event => {
 
     Username: {login.username} 
     <br/>
-    Password: 
+    Password: {login.password}
     <br />
-    <label htmlFor='username'>Username: </label>
+    <label for='username'>Username: </label>
     <input 
       type='text'
       name='username'
       value={value.username}
       onChange={onChangeHandler}
     />
+    <br />
+    <label for='password'>Password: </label>
+    <input 
+      type='text'
+      name='password'
+      value={value.password}
+      onChange={onChangeHandler}
+    />
+    <br />
     {/* <button onClick={() => dispatch({
       type: "submit",
       payload: value
