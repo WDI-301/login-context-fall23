@@ -24,7 +24,6 @@ const Home = () => {
       </a>
     </div>
   
-    <h1>Vite + React</h1>  
     <h2>Welcome {login.username}</h2>
     <button onClick={changeTheme}>Change Theme: {theme}</button>
 

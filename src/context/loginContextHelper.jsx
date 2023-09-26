@@ -12,7 +12,7 @@ export const submitLogin = async (dispatch, value) => {
 
 export const fetchLogin = async (dispatch, value) => {
 
-    let response = await Axios.post('/users/login-test', value)
+    let response = await Axios.post('/users/login', value)
     // console.log(response);
     dispatch({
         type: "submit",
