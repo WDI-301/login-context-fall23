@@ -27,21 +27,23 @@ const onChangeHandler = event => {
 
   return (
     <div id='login' className={theme}>
-
+{/* 
     Username: {login.username} 
-    <br/>
-    Password: {login.password}
-    <br />
-    <label for='username'>Username: </label>
+    <br/> */}
+    {/* Password: {login.password} */}
+    {/* <br /> */}
+    <label htmlFor='username'>Username: </label>
     <input 
+      id='username'
       type='text'
       name='username'
       value={value.username}
       onChange={onChangeHandler}
     />
     <br />
-    <label for='password'>Password: </label>
-    <input 
+    <label htmlFor='password'>Password: </label>
+    <input
+      id='password' 
       type='text'
       name='password'
       value={value.password}
@@ -53,7 +55,10 @@ const onChangeHandler = event => {
       payload: value
     })}>Submit</button> */}
     {/* <button onClick={() => submitLogin(dispatch, value)}>Submit</button> */}
-    <button onClick={() => fetchLogin(dispatch, value)}>Submit</button>
+    <button onClick={() => fetchLogin(dispatch, value)}>Login</button>
+    <button>Register</button>
+    {/* // Welcome {Username}
+    // Message: {Username} Successfully Registered */}
     </div>
 
   )

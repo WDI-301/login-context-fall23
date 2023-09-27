@@ -33,13 +33,17 @@ const loginReducer = (state, action) => {
     switch (action.type) {
         case 'submit':
             return action.payload
+        case 'LOGIN':
+            return action.payload
         case 'ERROR':
             console.log(action.payload)
             return {
                 ...state,
                 ...action.payload
-                
             }
+        
+        //REGISTER
+        //sets state with the payload user and message
         default:
             alert("hit default")
             state;

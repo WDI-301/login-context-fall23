@@ -30,3 +30,5 @@ export const fetchLogin = async (dispatch, value) => {
     }
 
 }
+
+//registerUser
