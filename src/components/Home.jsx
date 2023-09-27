@@ -25,6 +25,7 @@ const Home = () => {
     </div>
   
     <h2>Welcome {login.username}</h2>
+    <h3>Message: {login.message}</h3>
     <button onClick={changeTheme}>Change Theme: {theme}</button>
 
   </>

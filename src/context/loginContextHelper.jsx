@@ -11,11 +11,19 @@ export const submitLogin = async (dispatch, value) => {
 }
 
 export const fetchLogin = async (dispatch, value) => {
+    try {
 
-    let response = await Axios.post('/users/login', value)
-    // console.log(response);
-    dispatch({
-        type: "submit",
-        payload: response.data
-    })
+        let response = await Axios.post('/users/login', value)
+        console.log(response);
+        dispatch({
+            type: "submit",
+            payload: response.data
+        })
+    } 
+    catch (error) {
+        console.log('!@-------error-------@!')
+        console.log(error)
+        
+    }
+
 }
