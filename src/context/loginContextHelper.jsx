@@ -21,9 +21,12 @@ export const fetchLogin = async (dispatch, value) => {
         })
     } 
     catch (error) {
-        console.log('!@-------error-------@!')
-        console.log(error)
-        
+        // console.log('!@-------error-------@!')
+        // console.log(error)
+        dispatch({
+            type: "ERROR",
+            payload: error.response.data
+        })
     }
 
 }

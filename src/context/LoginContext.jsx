@@ -33,6 +33,13 @@ const loginReducer = (state, action) => {
     switch (action.type) {
         case 'submit':
             return action.payload
+        case 'ERROR':
+            console.log(action.payload)
+            return {
+                ...state,
+                ...action.payload
+                
+            }
         default:
             alert("hit default")
             state;
