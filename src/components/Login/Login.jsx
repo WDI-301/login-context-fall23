@@ -57,14 +57,27 @@ const onChangeHandler = event => {
             payload: value
           })}>Submit</button> */}
           {/* <button onClick={() => submitLogin(dispatch, value)}>Submit</button> */}
-          <button onClick={() => fetchLogin(dispatch, value)}>Login</button>
+          <button onClick={() => {
+            fetchLogin(dispatch, value)
+            setValue({
+              username: value.username,
+              password: ''
+            })
+            }}>Login</button>
           <button onClick={() => registerUser(dispatch, value)}>Register</button>
           {/* // Welcome {Username}
           // Message: {Username} Successfully Registered */}
         </>
         : 
         <>
-          <button>Logout</button>
+          <button onClick={() => {
+            dispatch({type: 'LOGOUT'})
+            //clear out input
+            // setValue({
+            //   username: '',
+            //   password: ''
+            // })
+           }}>Logout</button>
         </>
       }
     </div>

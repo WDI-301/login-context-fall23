@@ -52,6 +52,8 @@ const loginReducer = (state, action) => {
                 ...action.payload,
                 message: 'Thank for registering ' + action.payload.username
             }
+        case 'LOGOUT':
+            return initalState
         default:
             alert("hit default")
             state;
