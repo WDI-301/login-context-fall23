@@ -26,6 +26,7 @@ const Home = () => {
   
     <h2>Welcome {login.username}</h2>
     <h3>Message: {login.message}</h3>
+    {/* <h3>Message: {login.username} {login.message}</h3> */}
     <button onClick={changeTheme}>Change Theme: {theme}</button>
 
   </>

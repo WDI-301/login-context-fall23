@@ -3,7 +3,7 @@ import "./Login.css"
 
 import { ThemeContext } from '../../context/ThemeContext'
 import {LoginContext, LoginDispatchContext} from '../../context/LoginContext'
-import { fetchLogin, submitLogin } from '../../context/loginContextHelper'
+import { fetchLogin, registerUser, submitLogin } from '../../context/loginContextHelper'
 
 const Login = () => {
 const [value, setValue] = useState({
@@ -56,7 +56,7 @@ const onChangeHandler = event => {
     })}>Submit</button> */}
     {/* <button onClick={() => submitLogin(dispatch, value)}>Submit</button> */}
     <button onClick={() => fetchLogin(dispatch, value)}>Login</button>
-    <button>Register</button>
+    <button onClick={() => registerUser(dispatch, value)}>Register</button>
     {/* // Welcome {Username}
     // Message: {Username} Successfully Registered */}
     </div>

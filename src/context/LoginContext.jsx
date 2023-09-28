@@ -34,7 +34,10 @@ const loginReducer = (state, action) => {
         case 'submit':
             return action.payload
         case 'LOGIN':
-            return action.payload
+            return {
+                ...action.payload,
+                message: 'Welcome back ' + action.payload.username
+            }
         case 'ERROR':
             console.log(action.payload)
             return {
@@ -44,6 +47,11 @@ const loginReducer = (state, action) => {
         
         //REGISTER
         //sets state with the payload user and message
+        case 'REGISTER':
+            return {
+                ...action.payload,
+                message: 'Thank for registering ' + action.payload.username
+            }
         default:
             alert("hit default")
             state;
