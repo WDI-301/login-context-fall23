@@ -3,7 +3,7 @@ import "./Login.css"
 
 import { ThemeContext } from '../../context/ThemeContext'
 import {LoginContext, LoginDispatchContext} from '../../context/LoginContext'
-import { fetchLogin, registerUser, submitLogin } from '../../context/loginContextHelper'
+import { fetchLogin, logout, registerUser, submitLogin } from '../../context/loginContextHelper'
 import { checkAuthToken } from '../../lib/checkAuthToken'
 import { AuthContext, AuthDispatchContext } from '../../context/AuthContext'
 
@@ -23,19 +23,19 @@ const authDispatch = useContext(AuthDispatchContext)
 
 // on page load, check for a token
 // if token exists, log in user with the backend and then set state
-useEffect(() => {
-  const tokenLogin = async () => {
-      if(checkAuthToken()) {
-        // authorize token with backend
+// useEffect(() => {
+//   const tokenLogin = async () => {
+//       if(checkAuthToken()) {
+//         // authorize token with backend
 
-        // set state for login
-        // dispatch({
-        //   type: 'LOGIN'
-        // })
-      }
-    } 
-  tokenLogin()
-}, [])
+//         // set state for login
+//         // dispatch({
+//         //   type: 'LOGIN'
+//         // })
+//       }
+//     } 
+//   tokenLogin()
+// }, [])
 
 
 const onChangeHandler = event => {
@@ -94,13 +94,12 @@ const onChangeHandler = event => {
         : 
         <>
           <button onClick={() => {
-            dispatch({type: 'LOGOUT'})
-            authDispatch({type: 'AUTH_FAILURE'})
-            //clear out input
-            // setValue({
-            //   username: '',
-            //   password: ''
-            // })
+             logout(dispatch, authDispatch)
+              //clear out input
+              // setValue({
+              //   username: '',
+              //   password: ''
+              // })
            }}>Logout</button>
         </>
       }

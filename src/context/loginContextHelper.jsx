@@ -54,3 +54,13 @@ export const registerUser = async (dispatch, userData) => {
         errorHandler(dispatch, error)
     }
 }
+
+export const logout = (dispatch, authDispatch) => {
+    try {
+        localStorage.removeItem('JWT')
+        authDispatch({type: 'AUTH_FAILURE'})
+        dispatch({type: 'LOGOUT'})
+    } catch (error) {
+        errorHandler(dispatch, error)
+    }
+}
