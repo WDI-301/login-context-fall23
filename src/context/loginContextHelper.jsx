@@ -8,16 +8,16 @@ const errorHandler = async (dispatch, error) => {
 }
 
 export const submitLogin = async (dispatch, value) => {
-
     let response = await Axios.post('/users/login-test', value)
     // console.log(response);
+
     dispatch({
         type: "submit",
         payload: response.data
     })
 }
 
-export const fetchLogin = async (dispatch, value) => {
+export const fetchLogin = async (dispatch, value, authDispatch) => {
     try {
 
         let response = await Axios.post('/users/login', value)
@@ -25,6 +25,10 @@ export const fetchLogin = async (dispatch, value) => {
 
         // save the jwt token to local storage (local to browser)
         localStorage.setItem('JWT', response.data.token)
+        
+        authDispatch({
+            type: "AUTH_SUCCESS"
+        })
 
         dispatch({
             type: "LOGIN",

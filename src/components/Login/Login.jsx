@@ -5,6 +5,7 @@ import { ThemeContext } from '../../context/ThemeContext'
 import {LoginContext, LoginDispatchContext} from '../../context/LoginContext'
 import { fetchLogin, registerUser, submitLogin } from '../../context/loginContextHelper'
 import { checkAuthToken } from '../../lib/checkAuthToken'
+import { AuthContext, AuthDispatchContext } from '../../context/AuthContext'
 
 const Login = () => {
 const [value, setValue] = useState({
@@ -16,6 +17,9 @@ const {theme} = useContext(ThemeContext)
 
 const login = useContext(LoginContext)
 const dispatch = useContext(LoginDispatchContext)
+
+const auth = useContext(AuthContext)
+const authDispatch = useContext(AuthDispatchContext)
 
 // on page load, check for a token
 // if token exists, log in user with the backend and then set state
@@ -44,7 +48,7 @@ const onChangeHandler = event => {
   return (
     <div id='login' className={theme}>
       {
-        login.username === '' ?
+        !auth.isAuth ?
         <>
           {/* 
           Username: {login.username} 
@@ -74,13 +78,15 @@ const onChangeHandler = event => {
             payload: value
           })}>Submit</button> */}
           {/* <button onClick={() => submitLogin(dispatch, value)}>Submit</button> */}
+
           <button onClick={() => {
-            fetchLogin(dispatch, value)
+            fetchLogin(dispatch, value, authDispatch)
             setValue({
               username: value.username,
               password: ''
             })
             }}>Login</button>
+
           <button onClick={() => registerUser(dispatch, value)}>Register</button>
           {/* // Welcome {Username}
           // Message: {Username} Successfully Registered */}
@@ -89,6 +95,7 @@ const onChangeHandler = event => {
         <>
           <button onClick={() => {
             dispatch({type: 'LOGOUT'})
+            authDispatch({type: 'AUTH_FAILURE'})
             //clear out input
             // setValue({
             //   username: '',

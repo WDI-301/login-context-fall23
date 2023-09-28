@@ -6,6 +6,7 @@ import Login from './components/Login/Login';
 
 import { ThemeContext } from "./context/ThemeContext";
 import { LoginProvider } from './context/LoginContext'
+import { AuthProvider } from './context/AuthContext';
 
 function App() {
   const [theme, setTheme] = useState('light')
@@ -19,11 +20,13 @@ function App() {
       <ThemeContext.Provider value={
         {theme, setTheme, changeTheme}
         }>
-          {/* LoginProvider does not need value, because the actual is in the context file */}
-          <LoginProvider>
-              <Home />
-              <Login />
-          </LoginProvider>
+          <AuthProvider>
+            {/* LoginProvider does not need value, because the actual is in the context file */}
+            <LoginProvider>
+                <Home />
+                <Login />
+            </LoginProvider>
+          </AuthProvider>
       </ThemeContext.Provider>
     </div>
   )
