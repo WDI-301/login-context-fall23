@@ -1,9 +1,10 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import "./Login.css"
 
 import { ThemeContext } from '../../context/ThemeContext'
 import {LoginContext, LoginDispatchContext} from '../../context/LoginContext'
 import { fetchLogin, registerUser, submitLogin } from '../../context/loginContextHelper'
+import { checkAuthToken } from '../../lib/checkAuthToken'
 
 const Login = () => {
 const [value, setValue] = useState({
@@ -15,6 +16,22 @@ const {theme} = useContext(ThemeContext)
 
 const login = useContext(LoginContext)
 const dispatch = useContext(LoginDispatchContext)
+
+// on page load, check for a token
+// if token exists, log in user with the backend and then set state
+useEffect(() => {
+  const tokenLogin = async () => {
+      if(checkAuthToken()) {
+        // authorize token with backend
+
+        // set state for login
+        // dispatch({
+        //   type: 'LOGIN'
+        // })
+      }
+    } 
+  tokenLogin()
+}, [])
 
 
 const onChangeHandler = event => {
