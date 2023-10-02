@@ -6,6 +6,7 @@ import {LoginContext, LoginDispatchContext} from '../../context/LoginContext'
 import { fetchLogin, logout, registerUser, submitLogin } from '../../context/loginContextHelper'
 import { checkAuthToken } from '../../lib/checkAuthToken'
 import { AuthContext, AuthDispatchContext } from '../../context/AuthContext'
+import Axios from '../../lib/Axios'
 
 const Login = () => {
 const [value, setValue] = useState({
@@ -21,21 +22,23 @@ const dispatch = useContext(LoginDispatchContext)
 const auth = useContext(AuthContext)
 const authDispatch = useContext(AuthDispatchContext)
 
-// on page load, check for a token
+// on page load, check for a token, AuthContext handles this
 // if token exists, log in user with the backend and then set state
-// useEffect(() => {
-//   const tokenLogin = async () => {
-//       if(checkAuthToken()) {
-//         // authorize token with backend
+useEffect(() => {
+  const tokenLogin = async () => {
+      if(checkAuthToken()) {
+        // authorize token with backend
+        let response = await Axios.post('/users/authtoken')
 
-//         // set state for login
-//         // dispatch({
-//         //   type: 'LOGIN'
-//         // })
-//       }
-//     } 
-//   tokenLogin()
-// }, [])
+        // set state for login
+        dispatch({
+          type: 'LOGIN',
+          payload: response.data
+        })
+      }
+    } 
+  tokenLogin()
+}, [])
 
 
 const onChangeHandler = event => {

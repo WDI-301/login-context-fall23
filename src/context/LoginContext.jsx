@@ -37,7 +37,8 @@ const loginReducer = (state, action) => {
             return {
                 // ...action.payload,
                 username: action.payload.username,
-                message: 'Welcome back ' + action.payload.username
+                // message: 'Welcome back ' + action.payload.username
+                message: action.payload.message
             }
         case 'ERROR':
             console.log(action.payload)
