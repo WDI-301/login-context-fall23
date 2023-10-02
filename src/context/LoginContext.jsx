@@ -11,7 +11,7 @@ export const LoginDispatchContext = createContext(null)
 //initial State for the reducer
 const initalState = {
     username: '',
-    password: '',
+    // password: '',
     message: 'Please Login'
 }
 
@@ -35,7 +35,8 @@ const loginReducer = (state, action) => {
             return action.payload
         case 'LOGIN':
             return {
-                ...action.payload,
+                // ...action.payload,
+                username: action.payload.username,
                 message: 'Welcome back ' + action.payload.username
             }
         case 'ERROR':
